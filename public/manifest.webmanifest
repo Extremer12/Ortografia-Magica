@@ -1,0 +1,56 @@
+{
+  "name": "Ortografía Mágica",
+  "short_name": "Ortografía",
+  "description": "Aventura ilustrada e interactiva para aprender y practicar ortografía en la escuela primaria.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0E1C38",
+  "theme_color": "#0E1C38",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["education", "kids", "games"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Territorios del Lenguaje",
+      "short_name": "Mapa",
+      "description": "Explorar los 4 mundos de ortografía",
+      "url": "/#map",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Bitácora de Viaje",
+      "short_name": "Bitácora",
+      "description": "Consultar mis logros y racha",
+      "url": "/#progress",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

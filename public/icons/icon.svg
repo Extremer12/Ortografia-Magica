@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14254A" />
+      <stop offset="50%" stop-color="#0E1C38" />
+      <stop offset="100%" stop-color="#070E1E" />
+    </linearGradient>
+
+    <!-- Golden Rim Gradient -->
+    <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4CA78" />
+      <stop offset="50%" stop-color="#C27D16" />
+      <stop offset="100%" stop-color="#8E5707" />
+    </linearGradient>
+
+    <!-- Parchment Gradient -->
+    <linearGradient id="parchment" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FAF6EC" />
+    </linearGradient>
+
+    <!-- Fox Fur Gradient -->
+    <linearGradient id="foxFur" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F27A30" />
+      <stop offset="100%" stop-color="#D45B17" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#040A18" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Base -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#bgGrad)" stroke="url(#goldRim)" stroke-width="12" filter="url(#softShadow)" />
+
+  <!-- Magic Sparkles in Background -->
+  <g fill="#F4CA78" opacity="0.85">
+    <!-- Top-right star -->
+    <path d="M 390 90 Q 390 120 420 120 Q 390 120 390 150 Q 390 120 360 120 Q 390 120 390 90 Z" />
+    <!-- Top-left tiny star -->
+    <path d="M 120 110 Q 120 125 135 125 Q 120 125 120 140 Q 120 125 105 125 Q 120 125 120 110 Z" />
+    <!-- Floating tiny stars -->
+    <circle cx="340" cy="180" r="4" fill="#F4CA78" />
+    <circle cx="160" cy="180" r="3.5" fill="#F4CA78" />
+    <circle cx="410" cy="220" r="3" fill="#F4CA78" />
+    <circle cx="100" cy="240" r="4" fill="#F4CA78" />
+  </g>
+
+  <!-- Félix the Fox (Explorer Mascot) -->
+  <g id="felix-mascot">
+    <!-- Left Ear -->
+    <polygon points="170,250 130,130 220,195" fill="url(#foxFur)" />
+    <polygon points="165,235 145,150 205,198" fill="#FAF6EC" />
+    <polygon points="145,150 130,130 160,170" fill="#3D2012" />
+
+    <!-- Right Ear -->
+    <polygon points="342,250 382,130 292,195" fill="url(#foxFur)" />
+    <polygon points="347,235 367,150 307,198" fill="#FAF6EC" />
+    <polygon points="367,150 382,130 352,170" fill="#3D2012" />
+
+    <!-- Fox Head Base -->
+    <polygon points="256,190 160,250 160,285 256,365 352,285 352,250" fill="url(#foxFur)" />
+
+    <!-- Cheeks (White patches) -->
+    <polygon points="160,250 215,285 256,365 210,360 160,285" fill="#FFFDF8" />
+    <polygon points="352,250 297,285 256,365 302,360 352,285" fill="#FFFDF8" />
+
+    <!-- Forehead Star Blaze -->
+    <polygon points="256,220 263,245 256,255 249,245" fill="#FFFDF8" />
+
+    <!-- Friendly Eyes -->
+    <!-- Left Eye -->
+    <ellipse cx="215" cy="265" rx="8" ry="12" fill="#16284F" />
+    <circle cx="212" cy="261" r="3.5" fill="#FFFFFF" />
+    <!-- Right Eye -->
+    <ellipse cx="297" cy="265" rx="8" ry="12" fill="#16284F" />
+    <circle cx="294" cy="261" r="3.5" fill="#FFFFFF" />
+
+    <!-- Friendly Smiling Fox Snout & Nose -->
+    <ellipse cx="256" cy="335" rx="10" ry="7" fill="#1A1C24" />
+    <path d="M 252 342 Q 256 348 260 342" stroke="#1A1C24" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- Open Magic Book -->
+  <g id="magic-book" filter="url(#softShadow)">
+    <!-- Book Cover Spine & Back -->
+    <path d="M 80 410 Q 256 435 256 425 Q 256 435 432 410 L 442 428 Q 256 455 256 445 Q 256 455 70 428 Z" fill="#8E5707" />
+    <path d="M 85 405 Q 256 428 256 418 Q 256 428 427 405 L 435 422 Q 256 448 256 438 Q 256 448 77 422 Z" fill="#C27D16" />
+
+    <!-- Left Page Group -->
+    <path d="M 90 395 C 150 390 220 375 254 395 L 254 415 C 220 395 150 410 90 415 Z" fill="#E8DFCF" />
+    <path d="M 94 388 C 150 383 220 368 254 388 L 254 408 C 220 388 150 403 94 408 Z" fill="#F4EFE6" />
+    <path d="M 98 380 C 150 375 220 360 254 380 L 254 400 C 220 380 150 395 98 400 Z" fill="url(#parchment)" stroke="#E2DAC8" stroke-width="1.5" />
+
+    <!-- Right Page Group -->
+    <path d="M 422 395 C 362 390 292 375 258 395 L 258 415 C 292 395 362 410 422 415 Z" fill="#E8DFCF" />
+    <path d="M 418 388 C 362 383 292 368 258 388 L 258 408 C 292 388 362 403 418 408 Z" fill="#F4EFE6" />
+    <path d="M 414 380 C 362 375 292 360 258 380 L 258 400 C 292 380 362 395 414 400 Z" fill="url(#parchment)" stroke="#E2DAC8" stroke-width="1.5" />
+
+    <!-- Book Center Fold Highlight -->
+    <line x1="256" y1="375" x2="256" y2="435" stroke="#C27D16" stroke-width="2.5" />
+
+    <!-- Faint Lines on Parchment Pages -->
+    <path d="M 130 388 Q 185 378 235 385" stroke="#C8BDA5" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+    <path d="M 140 396 Q 185 388 230 393" stroke="#C8BDA5" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+    <path d="M 277 385 Q 327 378 382 388" stroke="#C8BDA5" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+    <path d="M 282 393 Q 327 388 372 396" stroke="#C8BDA5" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+  </g>
+
+  <!-- Glowing Feather / Quill across the Book -->
+  <g transform="rotate(-35 340 340)">
+    <path d="M 330 290 C 350 310 345 350 330 370 C 322 355 320 330 330 290 Z" fill="#1F5F46" />
+    <path d="M 330 290 C 315 315 318 345 330 370" stroke="#F4CA78" stroke-width="2" />
+    <!-- Nib tip -->
+    <polygon points="328,370 332,370 330,385" fill="#DF9A28" />
+  </g>
+
+  <!-- Magic Glowing Letter "A" on the left -->
+  <g transform="translate(130, 290) rotate(-8)">
+    <circle cx="20" cy="20" r="26" fill="#16284F" opacity="0.8" />
+    <circle cx="20" cy="20" r="26" stroke="#F4CA78" stroke-width="2.5" fill="none" />
+    <text x="20" y="29" font-family="'Fraunces', Georgia, serif" font-size="28" font-weight="bold" fill="#F4CA78" text-anchor="middle">A</text>
+  </g>
+
+  <!-- Magic Glowing Letter "B" on the right -->
+  <g transform="translate(340, 290) rotate(8)">
+    <circle cx="20" cy="20" r="26" fill="#16284F" opacity="0.8" />
+    <circle cx="20" cy="20" r="26" stroke="#F4CA78" stroke-width="2.5" fill="none" />
+    <text x="20" y="29" font-family="'Fraunces', Georgia, serif" font-size="28" font-weight="bold" fill="#F4CA78" text-anchor="middle">B</text>
+  </g>
+
+  <!-- Magical Tilde / Accent Mark flying with sparkles -->
+  <path d="M 235 155 Q 256 142 277 155" stroke="#F4CA78" stroke-width="7" stroke-linecap="round" fill="none" />
+</svg>

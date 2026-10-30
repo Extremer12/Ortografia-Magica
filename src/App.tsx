@@ -9,6 +9,7 @@ import { ScreenLearn } from './components/ScreenLearn';
 import { ScreenGame } from './components/ScreenGame';
 import { ScreenResults } from './components/ScreenResults';
 import { ScreenProgress } from './components/ScreenProgress';
+import { InstallPwaPrompt } from './components/InstallPwaPrompt';
 
 const AppContent: React.FC = () => {
   const { currentScreen } = useGame();
@@ -71,6 +72,7 @@ const AppContent: React.FC = () => {
     <div
       className={`min-h-screen w-full ${getScreenBg()} text-[#16284F] overflow-x-hidden relative flex flex-col`}
     >
+      <InstallPwaPrompt />
       {renderScreen()}
     </div>
   );
