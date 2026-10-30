@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-editorial: 'Fraunces', Georgia, serif;
+    --font-reading: 'Plus Jakarta Sans', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    
+    /* Strict Color Tokens */
+    --color-ink-deep: #0D1B36;
+    --color-ink-structure: #16284F;
+    --color-ink-subtle: #4A5B7D;
+    
+    --color-paper-light: #FDFBF7;
+    --color-paper-warm: #F7F4EB;
+    --color-paper-muted: #EFECE0;
+    --color-paper-border: #E2DAC8;
+    --color-paper-border-strong: #C8BDA5;
+    
+    --color-forest: #1F5F46;
+    --color-forest-soft: #EBF4F0;
+    --color-forest-dark: #14402F;
+    
+    --color-coral: #D9483B;
+    --color-coral-dark: #B5352A;
+    --color-coral-soft: #FDF1F0;
+    
+    --color-ochre: #C27D16;
+    --color-ochre-light: #DF9A28;
+    --color-ochre-soft: #FDF6E9;
+    --color-ochre-border: #E8BF73;
+  }
+
+  body {
+    font-family: var(--font-reading);
+    background-color: #0A1426;
+    color: #1A2538;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Editorial titles */
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-editorial);
+    font-optical-sizing: auto;
+  }
+}
+
+/* Editorial Paper Panel - warm texture and crafted borders */
+.page-paper {
+  background-color: var(--color-paper-light);
+  border: 1px solid var(--color-paper-border);
+  box-shadow: 0 4px 16px rgba(13, 27, 54, 0.08), 0 1px 3px rgba(13, 27, 54, 0.05);
+}
+
+.page-paper-warm {
+  background-color: var(--color-paper-warm);
+  border: 1px solid var(--color-paper-border);
+}
+
+/* Editorial Buttons with purposeful hierarchy */
+.btn-editorial-primary {
+  background-color: #C88214;
+  color: #111D30;
+  border: 1px solid #A86B0E;
+  box-shadow: 0 3px 0 #8E5707, 0 6px 14px rgba(200, 130, 20, 0.28);
+  font-family: var(--font-editorial);
+  font-weight: 700;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-editorial-primary:hover {
+  background-color: #D68F20;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 #8E5707, 0 8px 18px rgba(200, 130, 20, 0.35);
+}
+.btn-editorial-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #8E5707, 0 2px 4px rgba(200, 130, 20, 0.2);
+}
+
+.btn-editorial-coral {
+  background-color: #D9483B;
+  color: #FFFFFF;
+  border: 1px solid #B8362A;
+  box-shadow: 0 3px 0 #8F261C, 0 6px 14px rgba(217, 72, 59, 0.28);
+  font-family: var(--font-reading);
+  font-weight: 700;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-editorial-coral:hover {
+  background-color: #E25548;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 #8F261C, 0 8px 18px rgba(217, 72, 59, 0.35);
+}
+.btn-editorial-coral:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #8F261C, 0 2px 4px rgba(217, 72, 59, 0.2);
+}
+
+.btn-editorial-secondary {
+  background-color: #1A325F;
+  color: #F8F5EE;
+  border: 1px solid #284780;
+  box-shadow: 0 3px 0 #0D1A33, 0 4px 10px rgba(13, 27, 54, 0.3);
+  font-family: var(--font-reading);
+  font-weight: 700;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-editorial-secondary:hover {
+  background-color: #213E75;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 #0D1A33, 0 6px 14px rgba(13, 27, 54, 0.4);
+}
+.btn-editorial-secondary:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #0D1A33, 0 2px 4px rgba(13, 27, 54, 0.2);
+}
+
+.btn-editorial-paper {
+  background-color: #FDFBF7;
+  color: #16284F;
+  border: 1.5px solid #D9CDB8;
+  box-shadow: 0 2px 0 #C4B69E, 0 3px 8px rgba(0, 0, 0, 0.04);
+  font-family: var(--font-reading);
+  font-weight: 700;
+  transition: all 0.15s ease;
+}
+.btn-editorial-paper:hover {
+  background-color: #FFFFFF;
+  border-color: #B8A88E;
+  transform: translateY(-1px);
+}
+.btn-editorial-paper:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #C4B69E;
+}
+
+/* Refined editorial divider */
+.editorial-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #8C7F69;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.editorial-divider::before,
+.editorial-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #E2DAC8;
+}
+
+/* Map route drawing */
+.cartographic-path {
+  stroke-dasharray: 6 6;
+  stroke-linecap: round;
+}
+
+/* Subtle page transition helper */
+.scene-fade-in {
+  animation: sceneFade 0.25s ease-out;
+}
+
+@keyframes sceneFade {
+  from {
+    opacity: 0.85;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
