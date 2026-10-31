@@ -47,7 +47,7 @@ export const ActivitySyllables: React.FC<Props> = ({
     onSelect(assembledWord);
   };
 
-  const normalize = (w: string) => w.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const normalize = (w: string) => w.trim().toLowerCase();
   const isCorrect = isAnswered && (
     normalize(selectedOption || '') === normalize(question.correctAnswer) ||
     normalize(selectedOption || '') === normalize(question.targetWord || '')

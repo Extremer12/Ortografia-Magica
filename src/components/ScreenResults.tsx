@@ -277,20 +277,20 @@ export const ScreenResults: React.FC = () => {
                   {result.mistakes.map((m, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-[#FDFBF7] border border-[#D9CDB8] text-xs space-y-1.5"
+                      className="p-3 rounded-xl bg-[#FDFBF7] border border-[#D9CDB8] text-xs space-y-1.5 overflow-hidden"
                     >
-                      <p className="font-bold text-[#16284F]">
+                      <p className="font-bold text-[#16284F] break-words [overflow-wrap:anywhere]">
                         {idx + 1}. {m.prompt}
                       </p>
                       <div className="flex flex-wrap gap-2 text-[11px]">
-                        <span className="bg-[#FDF1F0] text-[#8F261C] border border-[#F5C2BE] px-2 py-0.5 rounded">
+                        <span className="bg-[#FDF1F0] text-[#8F261C] border border-[#F5C2BE] px-2 py-0.5 rounded break-words max-w-full">
                           Tu respuesta: <strong>{m.studentAnswer}</strong>
                         </span>
-                        <span className="bg-[#EBF4F0] text-[#14402F] border border-[#C6DFD5] px-2 py-0.5 rounded">
+                        <span className="bg-[#EBF4F0] text-[#14402F] border border-[#C6DFD5] px-2 py-0.5 rounded break-words max-w-full">
                           Correcto: <strong>{m.correctAnswer}</strong>
                         </span>
                       </div>
-                      <p className="text-[#4A5B7D] text-[11px] leading-relaxed pt-0.5 italic">
+                      <p className="text-[#4A5B7D] text-[11px] leading-relaxed pt-0.5 italic break-words [overflow-wrap:anywhere]">
                         {m.explanation}
                       </p>
                     </div>

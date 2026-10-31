@@ -56,23 +56,23 @@ export const ScreenLearn: React.FC = () => {
         </header>
 
         {/* Main Book Page Container */}
-        <article className="page-paper rounded-2xl p-5 sm:p-6 space-y-5 text-left border border-[#D9CDB8] shadow-xs">
+        <article className="page-paper rounded-2xl p-4 sm:p-6 space-y-5 text-left border border-[#D9CDB8] shadow-xs w-full overflow-hidden">
           
           {/* Chapter Heading & Topic */}
-          <div className="space-y-1 border-b border-[#E8DFCF] pb-4">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#C27D16]">
+          <div className="space-y-1.5 border-b border-[#E8DFCF] pb-4">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#C27D16] block">
               {lesson.topic}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-editorial font-bold text-[#16284F] leading-tight">
+            <h2 className="text-xl sm:text-2xl font-editorial font-bold text-[#16284F] leading-snug break-words">
               {lesson.title}
             </h2>
-            <p className="text-xs text-[#526079] leading-relaxed pt-1">
+            <p className="text-xs text-[#526079] leading-relaxed pt-0.5 break-words">
               {lesson.summary}
             </p>
           </div>
 
           {/* Book Tabs Navigation */}
-          <nav className="flex border-b border-[#E2DAC8] text-xs font-semibold overflow-x-auto gap-1" aria-label="Secciones de la lección">
+          <nav className="flex border-b border-[#E2DAC8] text-xs font-semibold overflow-x-auto gap-1 no-scrollbar py-0.5" aria-label="Secciones de la lección">
             <button
               type="button"
               onClick={() => {
@@ -143,20 +143,20 @@ export const ScreenLearn: React.FC = () => {
           {activeTab === 'explicacion' && (
             <div className="space-y-4 pt-1 scene-fade-in">
               <div className="space-y-2">
-                <h3 className="font-editorial font-bold text-base text-[#16284F]">
+                <h3 className="font-editorial font-bold text-base text-[#16284F] break-words">
                   {lesson.explanation.heading}
                 </h3>
-                <p className="text-sm text-[#2E3C54] leading-relaxed whitespace-pre-line font-normal">
+                <p className="text-sm text-[#2E3C54] leading-relaxed whitespace-pre-line font-normal break-words [overflow-wrap:anywhere]">
                   {lesson.explanation.text}
                 </p>
               </div>
 
               {/* Callout Rule (Bordered margin note) */}
-              <div className="p-4 rounded-xl bg-[#F7F4EB] border-l-4 border-l-[#1F5F46] border border-[#E2DAC8] space-y-1">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-[#F7F4EB] border-l-4 border-l-[#1F5F46] border border-[#E2DAC8] space-y-1">
                 <span className="text-[10px] uppercase font-bold tracking-widest text-[#1F5F46] block">
                   Regla de oro:
                 </span>
-                <p className="text-xs font-semibold text-[#14402F] leading-snug">
+                <p className="text-xs font-semibold text-[#14402F] leading-snug break-words [overflow-wrap:anywhere]">
                   {lesson.explanation.rememberAlert}
                 </p>
               </div>
@@ -173,10 +173,10 @@ export const ScreenLearn: React.FC = () => {
                         key={i}
                         type="button"
                         onClick={() => handleSpeak(word)}
-                        className="inline-flex items-center gap-1.5 bg-[#FAF6EC] hover:bg-[#FFFFFF] text-[#16284F] font-semibold text-xs py-1.5 px-3 rounded-lg border border-[#D9CDB8] transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-1.5 bg-[#FAF6EC] hover:bg-[#FFFFFF] text-[#16284F] font-semibold text-xs py-1.5 px-3 rounded-lg border border-[#D9CDB8] transition-colors cursor-pointer max-w-full break-words"
                       >
-                        <span>{word}</span>
-                        <Volume2 size={12} className="text-[#C27D16]" />
+                        <span className="break-words">{word}</span>
+                        <Volume2 size={12} className="text-[#C27D16] shrink-0" />
                       </button>
                     ))}
                   </div>
@@ -189,10 +189,10 @@ export const ScreenLearn: React.FC = () => {
           {activeTab === 'ejemplos' && (
             <div className="space-y-4 pt-1 scene-fade-in">
               <div className="space-y-1">
-                <h3 className="font-editorial font-bold text-base text-[#16284F]">
+                <h3 className="font-editorial font-bold text-base text-[#16284F] break-words">
                   Vocabulario de aplicación y lectura
                 </h3>
-                <p className="text-xs text-[#62718E]">
+                <p className="text-xs text-[#62718E] break-words">
                   Pronunciá cada palabra y prestá atención a la sílaba o letra destacada.
                 </p>
               </div>
@@ -200,12 +200,12 @@ export const ScreenLearn: React.FC = () => {
               <div className="space-y-3">
                 {lesson.examples.map((category, idx) => (
                   <div key={idx} className="p-3.5 rounded-xl bg-[#F7F4EB] border border-[#E2DAC8] space-y-2">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-[#16284F]">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-[#16284F] break-words">
                         {category.category}
                       </h4>
                       {category.hint && (
-                        <span className="text-[11px] text-[#7E8DAA] italic">
+                        <span className="text-[11px] text-[#7E8DAA] italic break-words">
                           {category.hint}
                         </span>
                       )}
@@ -217,10 +217,10 @@ export const ScreenLearn: React.FC = () => {
                           key={wIdx}
                           type="button"
                           onClick={() => handleSpeak(w)}
-                          className="bg-[#FAF6EC] hover:bg-[#FFFFFF] text-[#16284F] font-bold text-xs py-1.5 px-3 rounded-lg border border-[#D9CDB8] flex items-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
+                          className="bg-[#FAF6EC] hover:bg-[#FFFFFF] text-[#16284F] font-bold text-xs py-1.5 px-3 rounded-lg border border-[#D9CDB8] flex items-center gap-1.5 shadow-2xs transition-colors cursor-pointer max-w-full break-words"
                         >
-                          <span>{w}</span>
-                          <Volume2 size={12} className="text-[#C27D16]" />
+                          <span className="break-words">{w}</span>
+                          <Volume2 size={12} className="text-[#C27D16] shrink-0" />
                         </button>
                       ))}
                     </div>
@@ -238,10 +238,10 @@ export const ScreenLearn: React.FC = () => {
                   <AlertTriangle size={18} />
                 </div>
                 <div>
-                  <h3 className="font-editorial font-bold text-sm text-[#16284F]">
+                  <h3 className="font-editorial font-bold text-sm text-[#16284F] break-words">
                     Dudas y tropiezos habituales
                   </h3>
-                  <p className="text-xs text-[#62718E] pt-0.5">
+                  <p className="text-xs text-[#62718E] pt-0.5 break-words">
                     Compará cómo suele escribirse con error y cuál es la solución explicada.
                   </p>
                 </div>
@@ -251,37 +251,37 @@ export const ScreenLearn: React.FC = () => {
                 {lesson.commonMistakes?.map((item, mIdx) => (
                   <div
                     key={mIdx}
-                    className="p-4 rounded-xl bg-[#FDFBF7] border border-[#D9CDB8] space-y-2.5 shadow-2xs"
+                    className="p-3.5 sm:p-4 rounded-xl bg-[#FDFBF7] border border-[#D9CDB8] space-y-2.5 shadow-2xs overflow-hidden"
                   >
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                       {/* Incorrect Side */}
-                      <div className="p-2.5 rounded-lg bg-[#FDF1F0] border border-[#F5C2BE] space-y-0.5">
+                      <div className="p-2.5 sm:p-3 rounded-lg bg-[#FDF1F0] border border-[#F5C2BE] space-y-0.5 overflow-hidden">
                         <span className="text-[10px] uppercase font-bold text-[#8F261C] flex items-center gap-1">
-                          <X size={12} className="stroke-[3]" />
+                          <X size={12} className="stroke-[3] shrink-0" />
                           Incorrecto
                         </span>
-                        <p className="font-editorial text-sm font-bold text-[#8F261C] line-through decoration-[#8F261C]/50">
+                        <p className="font-editorial text-sm font-bold text-[#8F261C] line-through decoration-[#8F261C]/50 break-words [overflow-wrap:anywhere]">
                           {item.incorrect}
                         </p>
                       </div>
 
                       {/* Correct Side */}
-                      <div className="p-2.5 rounded-lg bg-[#EBF4F0] border border-[#C6DFD5] space-y-0.5">
+                      <div className="p-2.5 sm:p-3 rounded-lg bg-[#EBF4F0] border border-[#C6DFD5] space-y-0.5 overflow-hidden">
                         <span className="text-[10px] uppercase font-bold text-[#1F5F46] flex items-center gap-1">
-                          <Check size={12} className="stroke-[3]" />
+                          <Check size={12} className="stroke-[3] shrink-0" />
                           Forma correcta
                         </span>
-                        <p className="font-editorial text-sm font-bold text-[#14402F]">
+                        <p className="font-editorial text-sm font-bold text-[#14402F] break-words [overflow-wrap:anywhere]">
                           {item.correct}
                         </p>
                       </div>
                     </div>
 
-                    <div className="text-xs text-[#4A5B7D] bg-[#F7F4EB] p-2.5 rounded-lg border border-[#E2DAC8] space-y-0.5">
+                    <div className="text-xs text-[#4A5B7D] bg-[#F7F4EB] p-2.5 rounded-lg border border-[#E2DAC8] space-y-0.5 overflow-hidden">
                       <span className="font-bold text-[#16284F] block">
                         Fundamento pedagógico:
                       </span>
-                      <p className="leading-relaxed">
+                      <p className="leading-relaxed break-words [overflow-wrap:anywhere]">
                         {item.reason}
                       </p>
                     </div>
@@ -303,11 +303,11 @@ export const ScreenLearn: React.FC = () => {
                   />
                 </div>
                 <div className="space-y-0.5">
-                  <h4 className="font-editorial font-bold text-sm text-[#16284F] flex items-center gap-1.5">
-                    <Sparkles size={14} className="text-[#C27D16]" />
+                  <h4 className="font-editorial font-bold text-sm text-[#16284F] flex items-center gap-1.5 break-words">
+                    <Sparkles size={14} className="text-[#C27D16] shrink-0" />
                     Consejo mnemotécnico de Félix
                   </h4>
-                  <p className="text-xs text-[#526079]">
+                  <p className="text-xs text-[#526079] break-words">
                     Técnicas sencillas para recordar la regla en tus redacciones escolares.
                   </p>
                 </div>
@@ -315,11 +315,11 @@ export const ScreenLearn: React.FC = () => {
 
               <div className="space-y-3">
                 {lesson.tricks.map((trick, tIdx) => (
-                  <div key={tIdx} className="p-4 rounded-xl bg-[#FAF6EC] border border-[#E2DAC8] space-y-1">
-                    <h5 className="font-editorial font-bold text-sm text-[#C27D16]">
+                  <div key={tIdx} className="p-3.5 sm:p-4 rounded-xl bg-[#FAF6EC] border border-[#E2DAC8] space-y-1 overflow-hidden">
+                    <h5 className="font-editorial font-bold text-sm text-[#C27D16] break-words">
                       {trick.title}
                     </h5>
-                    <p className="text-xs text-[#2E3C54] leading-relaxed">
+                    <p className="text-xs text-[#2E3C54] leading-relaxed break-words [overflow-wrap:anywhere]">
                       {trick.description}
                     </p>
                   </div>

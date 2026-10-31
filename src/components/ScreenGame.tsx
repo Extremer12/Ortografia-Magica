@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
-import type { QuizResultMistake, ActivityType } from '../types';
+import type { QuizResultMistake, ActivityType, QuizQuestion } from '../types';
 import { X, Volume2, ArrowRight, Check, AlertCircle } from 'lucide-react';
 import { sound } from '../utils/sound';
 
@@ -15,9 +15,24 @@ export const ScreenGame: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
-  const [correctCount, setCorrectCount] = useState(0);
-  const [mistakes, setMistakes] = useState<QuizResultMistake[]>([]);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
+
+  // Synchronous ref to prevent any state lag on completion
+  const resultsRef = useRef<{
+    correctCount: number;
+    mistakes: QuizResultMistake[];
+  }>({
+    correctCount: 0,
+    mistakes: [],
+  });
+
+  // Reset counters when questions set changes
+  useEffect(() => {
+    resultsRef.current = { correctCount: 0, mistakes: [] };
+    setCurrentIndex(0);
+    setSelectedOption(null);
+    setIsAnswered(false);
+  }, [activeQuestions]);
 
   const questions = activeQuestions.length > 0 ? activeQuestions : [
     {
@@ -39,7 +54,33 @@ export const ScreenGame: React.FC = () => {
   const currentQ = questions[currentIndex] || questions[0];
   const progressPercent = Math.round(((currentIndex + 1) / questions.length) * 100);
 
-  const normalize = (val: string) => val.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  /**
+   * Accurate orthographic comparison preserving diacritical accents (á, é, í, ó, ú, ü, ñ).
+   * Stripping accents destroys the core pedagogical purpose (e.g., té vs te, más vs mas).
+   */
+  const checkAnswer = (selected: string, q: QuizQuestion): boolean => {
+    const sel = selected.trim();
+    const cor = q.correctAnswer.trim();
+    const target = q.targetWord?.trim();
+
+    // Exact string match
+    if (sel === cor) return true;
+    if (target && sel === target) return true;
+
+    // Check if options contain case-sensitive distinctions (e.g. 'Argentina' vs 'argentina')
+    const allOptions = q.options || q.fillOptions || q.correctionOptions || [];
+    const hasCaseSensitiveDistinction = allOptions.some(
+      opt => opt.trim() !== cor && opt.trim().toLowerCase() === cor.toLowerCase()
+    );
+
+    // If options don't differ by case alone, allow case-insensitive match WITHOUT stripping accents
+    if (!hasCaseSensitiveDistinction) {
+      if (sel.toLowerCase() === cor.toLowerCase()) return true;
+      if (target && sel.toLowerCase() === target.toLowerCase()) return true;
+    }
+
+    return false;
+  };
 
   const handleSelect = (option: string) => {
     if (isAnswered) return;
@@ -47,24 +88,20 @@ export const ScreenGame: React.FC = () => {
     setSelectedOption(option);
     setIsAnswered(true);
 
-    const isCorrect =
-      normalize(option) === normalize(currentQ.correctAnswer) ||
-      (currentQ.targetWord && normalize(option) === normalize(currentQ.targetWord));
+    const isCorrect = checkAnswer(option, currentQ);
 
     if (isCorrect) {
       sound.playCorrect();
-      setCorrectCount(prev => prev + 1);
+      resultsRef.current.correctCount += 1;
     } else {
       sound.playWrong();
-      setMistakes(prev => [
-        ...prev,
-        {
-          prompt: currentQ.prompt,
-          studentAnswer: option,
-          correctAnswer: currentQ.correctAnswer,
-          explanation: currentQ.explanation,
-        },
-      ]);
+      const mistakeRecord: QuizResultMistake = {
+        prompt: currentQ.prompt,
+        studentAnswer: option,
+        correctAnswer: currentQ.correctAnswer,
+        explanation: currentQ.explanation,
+      };
+      resultsRef.current.mistakes.push(mistakeRecord);
     }
   };
 
@@ -75,7 +112,11 @@ export const ScreenGame: React.FC = () => {
       setSelectedOption(null);
       setIsAnswered(false);
     } else {
-      finishQuiz(correctCount, questions.length, mistakes);
+      finishQuiz(
+        resultsRef.current.correctCount,
+        questions.length,
+        resultsRef.current.mistakes
+      );
     }
   };
 
@@ -151,10 +192,7 @@ export const ScreenGame: React.FC = () => {
   };
 
   const isCurrentAnswerCorrect =
-    isAnswered &&
-    selectedOption &&
-    (normalize(selectedOption) === normalize(currentQ.correctAnswer) ||
-      (currentQ.targetWord && normalize(selectedOption) === normalize(currentQ.targetWord)));
+    isAnswered && selectedOption !== null && checkAnswer(selectedOption, currentQ);
 
   return (
     <div className="min-h-screen pb-10 pt-4 px-4 sm:px-6 max-w-xl mx-auto flex flex-col justify-between scene-fade-in text-[#16284F]">

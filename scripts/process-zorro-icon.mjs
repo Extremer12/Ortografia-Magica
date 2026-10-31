@@ -255,3 +255,4 @@ fs.writeFileSync(path.join(iconsDir, 'icon.svg'), svgWrapper);
 console.log('favicon.svg y icon.svg actualizados con la nueva imagen del zorro mágico.');
 
 console.log('=== ¡Todos los iconos generados y procesados meticulosamente! ===');
+
