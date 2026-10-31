@@ -187,3 +187,4 @@ console.log('Generando apple-touch-icon.png...');
 fs.writeFileSync(path.join(iconsDir, 'apple-touch-icon.png'), generateIcon(180, true));
 
 console.log('¡Iconos PWA generados con éxito!');
+

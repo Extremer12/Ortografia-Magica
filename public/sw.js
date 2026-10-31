@@ -7,10 +7,16 @@ const STATIC_PRECACHE = [
   '/index.html',
   '/manifest.webmanifest',
   '/favicon.svg',
+  '/favicon.png',
   '/icons/icon.svg',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
+  '/icons/icon-512-maskable.png',
   '/icons/apple-touch-icon.png',
+  '/icons/zorromagicoicon.png',
+  '/zorromagicoicon.png',
+  '/assets/zorro_encantado_banner.png',
+  '/assets/og-banner.png',
   '/assets/fox_mascot.jpg',
   '/assets/fox_celebrating.jpg',
   '/assets/world_bosque.jpg',
@@ -85,3 +91,4 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+

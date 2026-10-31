@@ -71,7 +71,7 @@ export const InstallPwaPrompt: React.FC = () => {
         <div className="bg-[#0E1C38] border-2 border-[#C27D16] text-[#FAF6EC] rounded-2xl p-3.5 shadow-[0_12px_36px_rgba(4,10,24,0.7)] flex items-center gap-3">
           {/* App Icon preview */}
           <div className="w-11 h-11 rounded-xl overflow-hidden border border-[#D9CDB8]/40 shrink-0 bg-[#16284F] flex items-center justify-center">
-            <img src="/icons/icon.svg" alt="Ortografía Mágica" className="w-full h-full object-cover" />
+            <img src="/icons/icon-192.png" alt="Ortografía Mágica" className="w-full h-full object-cover" />
           </div>
 
           <div className="flex-1 min-w-0 text-left">
@@ -161,3 +161,4 @@ export const InstallPwaPrompt: React.FC = () => {
     </>
   );
 };
+
